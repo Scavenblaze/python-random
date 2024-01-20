@@ -8,7 +8,7 @@ def getword():
     #choose random word from file 
     with open(filepath, 'r') as file:       #with is used for file (also autocloses file when done), open opens(filepath, in read mode) as file
         wordchecker=[word.strip() for word in file.readlines()]
-        currword=random.choice(wordchecker)   #random word is chosen
+        currword=list(random.choice(wordchecker))   #random word is chosen
         
         
 #wordle logic
@@ -59,3 +59,10 @@ def main():
     else: exit()
     
 main()
+
+'''known issue:
+word is [g r a m s]
+guessed is [g r a s s]
+shows [g r a 1 s]
+it still counts repeated letters
+'''
