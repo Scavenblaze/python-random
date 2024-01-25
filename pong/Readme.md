@@ -5,6 +5,6 @@ It has a scoring system that keeps track of player scores.
 **PATCHES:**
 > Patch v1:  Released the game.
   
-[+] Added sounds if either player wins and when the ball hits the paddle  
+[+] Added sounds when either player wins and when the ball hits the paddle  
 [+] Added scoring system  
 Known issues: paddle movement is slow or needs repeated key pressing to move it.  
