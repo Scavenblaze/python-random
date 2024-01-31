@@ -54,7 +54,7 @@ def main():
         i+=1
         print("guesses left ", 6-i)
     print(currword)
-    if(guess_common==currword): print("yaay u won congrats!!")
+    if(guess_common==currword): print("yaay you won congrats!!")
     x=input("Play again? yes?: ").lower()
     if x=='yes':
         main()
