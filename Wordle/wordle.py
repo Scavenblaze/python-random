@@ -1,19 +1,17 @@
 import random
 
-#words.txt path, pls change, still figuring it out
-filepath = 'C:/Users/yashg/OneDrive/Desktop/codes/python dump/Wordle/words.txt'
+filepath = 'words.txt'
 
 def getword():
-    global currword, wordchecker
     #choose random word from file 
     with open(filepath, 'r') as file:       #with is used for file (also autocloses file when done), open opens(filepath, in read mode) as file
         wordchecker=[word.strip() for word in file.readlines()]
-        currword=list(random.choice(wordchecker))   #random word is chosen
+        currword=list(random.choice(wordchecker)) #random word is chosen
+        return currword, wordchecker
         
         
 #wordle logic
-def check():
-    global currword, guess, guess_common, wordchecker
+def check(currword, wordchecker):
     guess_common=[]
     
     
@@ -31,24 +29,28 @@ def check():
     
    
     #Checks common letters
+    matched=set()
     for i in range(len(currword)):
-        if(currword[i]==guess[i]):
+        if i in matched:
             guess_common.append(currword[i])
-        elif(guess[i] in currword):
+        elif currword[i]==guess[i]:
+            guess_common.append(currword[i])
+            matched.add(i)
+        elif currword[i] in guess and currword not in guess_common:
             guess_common.append('1')
         else: guess_common.append('_')
     print(guess)
     print(guess_common)
+    return guess_common
 
 #main
 def main():
-    global guess_common,currword
     i=0
     print("---------\n5 letter word\n_ means not a correct letter\n1 means letter is correct but not at the right position\n'letter' means correct position")
-    getword()
+    currword, wordchecker = getword()
     guess_common=[]
     while(guess_common!=currword and i<5):
-        check()
+        guess_common = check(currword, wordchecker)
         i+=1
         print("guesses left ", 5-i)
     print(currword)
@@ -60,9 +62,3 @@ def main():
     
 main()
 
-'''known issue:
-word is [g r a m s]
-guessed is [g r a s s]
-shows [g r a 1 s]
-it still counts repeated letters
-'''
