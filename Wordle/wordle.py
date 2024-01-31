@@ -49,10 +49,10 @@ def main():
     print("---------\n5 letter word\n_ means not a correct letter\n1 means letter is correct but not at the right position\n'letter' means correct position")
     currword, wordchecker = getword()
     guess_common=[]
-    while(guess_common!=currword and i<5):
+    while(guess_common!=currword and i<6):
         guess_common = check(currword, wordchecker)
         i+=1
-        print("guesses left ", 5-i)
+        print("guesses left ", 6-i)
     print(currword)
     if(guess_common==currword): print("yaay u won congrats!!")
     x=input("Play again? yes?: ").lower()
