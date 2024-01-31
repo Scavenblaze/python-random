@@ -78,12 +78,6 @@ def dealerhit():
             break
 
 
-def stand():
-   print("okay standing")
-   dealerhit()
-   
-
-
 
 #output
 def main():
@@ -100,22 +94,23 @@ def main():
                 print("you lose")
                 break
         elif(ch==2):
-            stand()
+            print("okay standing... Dealer will play now.")
+            dealerhit()
             break
         else: print("i said 1 or 2")
 
 
 
 while(True):
-    chh=input("play?\n 1) yes\n2) no\n")
-    if(chh=='1'):
+    chh=input("play?\n 1) yes\n2) no\n").lower()
+    if(chh=='yes'):
         player=0
         dealer=0
         main()
-    elif(chh=='2'):
+    elif(chh=='no'):
         break
     else:
-        print("1 or 2 dumbass")
+        print("yes or no dumbass")
         
         
 #no split or double or insure cuz i still didn't understand split and insure
